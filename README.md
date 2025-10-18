@@ -66,7 +66,7 @@ Description of folders and files:
 
 ```
 Run tests
-mvn clean test -Dplatform=andorid -Denv=release -Dconfig=app.properties -DsuiteXmlFile=smoke.xml
+mvn clean test -Dplatform=android -Denv=release -Dconfig=app.properties -DsuiteXmlFile=smoke.xml
 mvn clean test -Dplatform=ios -Denv=release -Dconfig=ios.properties -DsuiteXmlFile=smoke.xml
 ```
 

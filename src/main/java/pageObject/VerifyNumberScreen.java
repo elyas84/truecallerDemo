@@ -73,7 +73,7 @@ public class VerifyNumberScreen extends BaseScreen {
                 AppDriver.getCurrentDriver().findElement(By.xpath("//android.widget.TextView[contains(@text,'" + country + "')]")).click();
                 flag = true;
             } catch (Exception e) {
-                ActionHelper.swipe(ActionHelper.SwipeDirection.UP, 300);
+                ActionHelper.swipe(ActionHelper.SwipeDirection.UP, 150); //the duration of the scrolling is completely customisable
                 attempt++;
                 logger.info("swiped, [{}] ", attempt);
             }
