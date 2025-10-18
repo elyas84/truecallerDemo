@@ -46,15 +46,22 @@ public class VerifyNumberScreen extends BaseScreen {
         }
     }
 
-    public void verifyVerifyMyNumberScreenVisibility() {
-        logger.info("");
+    /**
+     * Verify My Number Screen Visibility
+     */
+    public void verifyMyNumberScreenVisibility() {
+        logger.info("[ Verify My Number Screen Visibility ]");
         ActionHelper.waitForElementVisibility(phoneNumberScreenTitle, DEFAULT_TIMEOUT);
         ActionHelper.verifyElementDisplayed(phoneNumberScreenTitle);
         ActionHelper.verifyElementDisplayed(countrySelect);
         ActionHelper.verifyElementDisplayed(selectCountyInputPlaceholder);
     }
 
+    /**
+     * Select Country And Register
+     */
     public void selectCountryAndRegister(String country, String firstAttemptPhone, String secondAttemptPhone) {
+        logger.info("[ Select Country And Register ]");
         click(countrySelect);
         ActionHelper.waitForElementVisibility(selectCountyInputPlaceholder, DEFAULT_TIMEOUT);
         ActionHelper.waitForElementVisibility(searchBtn, DEFAULT_TIMEOUT);
@@ -100,11 +107,11 @@ public class VerifyNumberScreen extends BaseScreen {
     }
 
     /**
-     * very eid number feature
+     * very edit number feature
      */
 
     public void verifyEditPhoneNumberFeat(String phoneNumber) {
-        logger.info("");
+        logger.info("[ very edit number feature ]");
         click(phoneNumberConfirmationModal_editBtn);
         sendText(phoneNumberInputField, phoneNumber);
         ActionHelper.waitForElementVisibility(verifyMyNumberBtn, DEFAULT_TIMEOUT);
@@ -113,7 +120,8 @@ public class VerifyNumberScreen extends BaseScreen {
         ActionHelper.verifyElementDisplayed(phoneNumberConfirmationModal_phoneNumber);
         ActionHelper.verifyElementDisplayed(phoneNumberConfirmationModal_editBtn);
         ActionHelper.verifyElementDisplayed(phoneNumberConfirmationModal_Yes_btn);
-        Assert.assertTrue(ActionHelper.getAttr(phoneNumberConfirmationModal_phoneNumber, "text").contains(phoneNumber),
+        String numberWithoutSpace = ActionHelper.getAttr(phoneNumberConfirmationModal_phoneNumber, "text").replace(" ", ""); //+46123456789
+        Assert.assertTrue(numberWithoutSpace.contains(phoneNumber),
                 "Inserted number [" + ActionHelper.getAttr(phoneNumberConfirmationModal_phoneNumber, "text") + "]  and updated [" + phoneNumber + "] are not same");
         click(phoneNumberConfirmationModal_Yes_btn);
         ActionHelper.waitForElementVisibility(verifyMessage, DEFAULT_TIMEOUT);

@@ -19,7 +19,7 @@ public class AppDriver {
     }
 
     public static AppDriver getInstance() {
-        logger.info("Processing...");
+        logger.info("[ Processing...]");
         if (instance == null) {
             instance = new AppDriver();
         }

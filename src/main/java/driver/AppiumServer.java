@@ -34,7 +34,7 @@ public class AppiumServer {
     }
 
     public static void startTheServer() {
-        logger.info("Appium server is starting on PORT [{}]", PORT);
+        logger.info("[ Appium server is starting on PORT [{}] ]", PORT);
         getAppiumInstance().start();
 
     }
@@ -43,7 +43,7 @@ public class AppiumServer {
     public static void killTheServer() {
         if (server != null) {
             getAppiumInstance().stop();
-            logger.info("Appium server is down.");
+            logger.info("[ Appium server is closed....]");
         }
     }
 

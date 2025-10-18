@@ -17,14 +17,14 @@ public class ConfigReader {
 
     static {
         try {
-            logger.info("Reading config file, [{}]", System.getProperty("config"));
+            logger.info("[ Reading config file, [{}] ]", System.getProperty("config"));
             String path = AppData.config;
             FileInputStream input = new FileInputStream(path);
             properties = new Properties();
             properties.load(input);
             input.close();
         } catch (Exception e) {
-            throw new Error("Failed to read config file - [server is down or device is off]");
+            throw new Error("[ Failed to read config file - [server is down or device is off] ]");
         }
     }
 

@@ -18,13 +18,17 @@ public class GetStartedScreen extends BaseScreen {
     private By dataPermissionContinueBtn;
     private By permission_allow_btn;
     private By OkBtn;
-    private By getStartedScreenTitle;
-    private By getStartedScreenSubTitle;
-    private By dontAskMeAgainCheckbox;
-    private By setAsDefaultBtn;
-    private By permission_msg_title;
-    private By makeDefaultSMSAppOverlayTitle;
-    private By setDefaultOptionList;
+
+    /**
+     * private By getStartedScreenTitle;
+     * private By getStartedScreenSubTitle;
+     * private By dontAskMeAgainCheckbox;
+     * private By setAsDefaultBtn;
+     * private By permission_msg_title;
+     * private By makeDefaultSMSAppOverlayTitle;
+     * private By setDefaultOptionList;
+     */
+
 
     public GetStartedScreen() {
         /**
@@ -33,18 +37,20 @@ public class GetStartedScreen extends BaseScreen {
         PageFactory.initElements(AppDriver.getCurrentDriver(), this);
 
         if (AppDriver.getCurrentDriver() instanceof AndroidDriver) {
+            /**
+             *    getStartedScreenTitle = AppiumBy.id("title");
+             *    getStartedScreenSubTitle = AppiumBy.id("subtitle");
+             *    dontAskMeAgainCheckbox = AppiumBy.id("dont_ask_again");
+             *    setAsDefaultBtn = AppiumBy.id("button1");
+             *    permission_msg_title = AppiumBy.id("permission_message");
+             *    makeDefaultSMSAppOverlayTitle = AppiumBy.xpath("//android.widget.TextView[@text='Set Truecaller as your default SMS app?']");
+             *    setDefaultOptionList = AppiumBy.xpath("//android.widget.ListView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView");
+             */
             brandLogoId = AppiumBy.id("wizardLogo");
-            getStartedScreenTitle = AppiumBy.id("title");
-            getStartedScreenSubTitle = AppiumBy.id("subtitle");
-            dontAskMeAgainCheckbox = AppiumBy.id("dont_ask_again");
-            setAsDefaultBtn = AppiumBy.id("button1");
             googleOverlayCloseBtnId = AppiumBy.accessibilityId("Cancel");
             useGoogleAccountCancelBtn = AppiumBy.id("cancelButton");
             dataPermissionContinueBtn = AppiumBy.id("button1");
-            permission_msg_title = AppiumBy.id("permission_message");
             permission_allow_btn = AppiumBy.id("permission_allow_button");
-            makeDefaultSMSAppOverlayTitle = AppiumBy.xpath("//android.widget.TextView[@text='Set Truecaller as your default SMS app?']");
-            setDefaultOptionList = AppiumBy.xpath("//android.widget.ListView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.TextView");
             OkBtn = AppiumBy.xpath("//android.widget.Button[@resource-id='android:id/button1']");
 
 
@@ -56,13 +62,20 @@ public class GetStartedScreen extends BaseScreen {
         }
     }
 
+    /**
+     * verify GetStarted Screen Visibility
+     */
     public void verifyGetStartedScreenVisibility() {
+        logger.info("Verify getStarted screen visibility");
         ActionHelper.waitForElementVisibility(brandLogoId, DEFAULT_TIMEOUT);
         ActionHelper.verifyElementDisplayed(brandLogoId);
     }
 
-
+    /**
+     * getStarted Screen Modal Handler
+     */
     public VerifyNumberScreen getStartedScreenModalHandler() {
+        logger.info("[ Start the modal handler ]");
         boolean isHandled = false;
         ActionHelper.waitForElementVisibility(getStartedBtn, DEFAULT_TIMEOUT);
         click(getStartedBtn);
@@ -96,7 +109,7 @@ public class GetStartedScreen extends BaseScreen {
      * Google signing handler
      */
     public void googleSignUpModalHandler() {
-        logger.info("google signup modal handler");
+        logger.info("[ google signup modal handler ]");
         ActionHelper.waitForElementVisibility(googleOverlayCloseBtnId, DEFAULT_TIMEOUT);
         click(googleOverlayCloseBtnId);
         ActionHelper.waitForElementVisibility(useGoogleAccountCancelBtn, DEFAULT_TIMEOUT);

@@ -35,7 +35,7 @@ public class ActionHelper {
      * to use this type of waiting.
      */
     public static void waitForInSecond(int timeout) {
-        logger.info("waiting for [{}] second(s)", timeout);
+        logger.info("[ waiting for [{}] second(s) ]", timeout);
         try {
             Thread.sleep(timeout * 1000L);
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class ActionHelper {
      * Explicit wait --> wait for until some conditions fulfill
      */
     public static void waitForElementVisibility(By locatedBy, int timeout) {
-        logger.info("Wait for element to be visible with timeout , [ {} ] second(s)", timeout);
+        logger.info("[ Wait for element to be visible with timeout , [ {} ] second(s) ]", timeout);
         wait = new WebDriverWait(AppDriver.getCurrentDriver(), Duration.ofSeconds(timeout));
         wait.until(ExpectedConditions.presenceOfElementLocated(locatedBy));
     }
@@ -58,12 +58,12 @@ public class ActionHelper {
      * just asserting the element inside.
      */
     public static void verifyElementDisplayed(By locatedBy) {
-        logger.info("Verify element visibility");
+        logger.info("[ Verify element visibility ]");
         Assert.assertTrue(AppDriver.getCurrentDriver().findElement(locatedBy).isDisplayed(), "[Element is not displayed]");
     }
 
     public static String getAttr(By locatedBy, String attrName) {
-        logger.info("Getting attr value of element, [ {} ], attr name, [ {} ]", locatedBy, attrName);
+        logger.info("[ Getting attr value of element, [{}], attr name, [{}] ]", locatedBy, attrName);
         return AppDriver.getCurrentDriver().findElement(locatedBy).getAttribute(attrName);
     }
 
@@ -76,7 +76,7 @@ public class ActionHelper {
     }
 
     public static void swipe(SwipeDirection direction, int durationOfMillis) {
-        logger.info("swiping action will be performing by direction [{}], [{}] millis", direction, durationOfMillis);
+        logger.info("[ swiping action will be performing by direction [{}], [{}] millis ]", direction, durationOfMillis);
         Dimension size = AppDriver.getCurrentDriver().manage().window().getSize();
         System.out.println(size);
         Point middlePoint = new Point((int) (size.width * 0.5), (int) (size.height * 0.5));
@@ -102,7 +102,7 @@ public class ActionHelper {
 
 
     public static void scroll(Point start, Point end, Duration duration) {
-        logger.info("Start [{}],  End [{}] Duration [{}]", start, end, duration);
+        logger.info("[ Start [{}],  End [{}] Duration [{}] ]", start, end, duration);
         PointerInput input = new PointerInput(PointerInput.Kind.TOUCH, "finger1");
         Sequence swipe = new Sequence(input, 0).
                 addAction(input.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), start.x, start.y))

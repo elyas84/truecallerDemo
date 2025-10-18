@@ -17,7 +17,7 @@ public class RegisterTests extends TestBase {
         getStartedScreen = new GetStartedScreen();
         getStartedScreen.verifyGetStartedScreenVisibility();
         verifyNumberScreen = getStartedScreen.getStartedScreenModalHandler();
-        verifyNumberScreen.verifyVerifyMyNumberScreenVisibility();
+        verifyNumberScreen.verifyMyNumberScreenVisibility();
         verifyNumberScreen.selectCountryAndRegister(ConfigReader.get("country"),
                 ConfigReader.get("phoneNumber_firstAttempt"), ConfigReader.get("phoneNumber_secondAttempt"));
     }

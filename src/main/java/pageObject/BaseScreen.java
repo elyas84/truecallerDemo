@@ -32,7 +32,7 @@ public class BaseScreen {
      */
 
     public void waitForAppLoads(int timeout) {
-        logger.info("Waiting for the app to fully load");
+        logger.info("[ Waiting for the app to fully load ]");
         ActionHelper.waitForElementVisibility(getStartedBtn, timeout);
     }
 
@@ -41,7 +41,7 @@ public class BaseScreen {
      */
 
     public void clear(By locatedBy) {
-        logger.info("Clear input fields");
+        logger.info("[ Clear input fields ]");
         ActionHelper.waitForElementVisibility(locatedBy, DEFAULT_TIMEOUT);
         AppDriver.getCurrentDriver().findElement(locatedBy).clear();
     }
@@ -51,7 +51,7 @@ public class BaseScreen {
      * @param text
      */
     public void sendText(By locatedBy, String text) {
-        logger.info("Sending text to element, [ {} ]", locatedBy);
+        logger.info("[ Sending text to element, [{}] ]", locatedBy);
         ActionHelper.waitForElementVisibility(locatedBy, DEFAULT_TIMEOUT);
         AppDriver.getCurrentDriver().findElement(locatedBy).sendKeys(text);
     }
@@ -60,7 +60,7 @@ public class BaseScreen {
      * @param locatedBy
      */
     public void click(By locatedBy) {
-        logger.info("Clicking on the element, [ {} ]", locatedBy);
+        logger.info("[ Clicking on the element, [{}] ]", locatedBy);
         AppDriver.getCurrentDriver().findElement(locatedBy).click();
     }
 

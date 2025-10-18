@@ -98,7 +98,7 @@ public class AppFactory {
     }
 
     public static void launchingApp() {
-        logger.info("PLATFORM NAME [ {} ]", AppData.platform);
+        logger.info("[ PLATFORM NAME [{}] ]", AppData.platform);
         if (AppData.platform.equalsIgnoreCase("android")) {
             AppFactory.android_appLauncher();
         } else if (AppData.platform.equalsIgnoreCase("ios")) {
