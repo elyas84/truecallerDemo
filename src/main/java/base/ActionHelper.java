@@ -114,40 +114,4 @@ public class ActionHelper {
         driver.perform(ImmutableList.of(swipe));
     }
 
-
-    /**
-     * perform swipe action until an element in view
-     */
-
-    public static void scrollDownTillVertically(By locatedBy) {
-        logger.info("swiping the screen until element {} into view", locatedBy);
-        boolean flag = false;
-        int attempt = 0;
-        while (attempt < 15) {
-            try {
-                AppDriver.getCurrentDriver().findElement(locatedBy);
-                Dimension size = AppDriver.getCurrentDriver().manage().window().getSize();
-                Point middlePoint = new Point((int) (size.width * 0.5), (int) (size.height * 0.5));
-                int elementYPosition = AppDriver.getCurrentDriver().findElement(locatedBy).getLocation().getY();
-                Dimension elementSize = AppDriver.getCurrentDriver().findElement(locatedBy).getSize();
-                int startX = elementSize.getWidth() / 2;
-                int startY = elementSize.getHeight() / 2;
-                int endY = middlePoint.y;
-                if (middlePoint.getY() > elementYPosition) {
-                    scroll(new Point(middlePoint.x, elementYPosition), new Point(middlePoint.x, endY + elementYPosition), Duration.ofMillis(800));
-                } else if (middlePoint.getY() < elementYPosition) {
-                    scroll(new Point(startX, startY), new Point(startX, endY - elementYPosition), Duration.ofMillis(800));
-                }
-                flag = true;
-            } catch (org.openqa.selenium.NoSuchElementException e) {
-                swipe(SwipeDirection.UP, 500);
-                attempt++;
-            }
-            if (flag) {
-                break;
-            }
-        }
-    }
-
-
 }
